@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Tradingview Image poster</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Tradingview Image poster</h3>
+        </div>
+
+        <div class="jumbotron">
+            <h1>Make charts great again!</h1>
+
+            <input accept="image/*" type="file" id="myImageInput"  onchange="validateSelectedFile();" />
+            <input type="button" class="btn btn-lg btn-success"
+                   onclick="document.getElementById('myImageInput').click()"
+                   value="Select an image"  />
+        </div>
+
+        <div class="row marketing">
+            <!--<div class="col-lg-6">
+                <h4>Sample</h4>
+                <a href="img/sample.png" target="_blank"><img src="img/sample.png" class="sample_image" /></a>
+            </div>-->
+
+            <div>
+                <table style="width:50%" class="center">
+                    <tr>
+                        <th>Type</th>
+                        <th>Data</th>
+                    </tr>
+                    <tr>
+                        <td>Ticker</td>
+                        <td><input id="ticker" type="text" text placeholder="BTCUSD" value="BTCUSD" /></td>
+                    </tr>
+                    <tr>
+                        <td>Exchange</td>
+                        <td><input id="exchange" type="text" text placeholder="MTGOX" value="MTGOX" /></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input id="description" type="text" text placeholder="Bitcoin / Dollar" value="Bitcoin / Dollar" /></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input id="price" type="text" text placeholder="999" value="999" /></td>
+                    </tr>
+                    <tr>
+                        <td>Percentage change</td>
+                        <td><input id="percChange" type="text" text placeholder="-999" value="-999" /></td>
+                    </tr>
+                    <tr>
+                        <td>Timeframe</td>
+                        <td><input id="timeframe" type="text" text placeholder="240" value="240" /></td>
+                    </tr>
+                    <tr>
+                        <td>Symbol</td>
+                        <td><input id="symbol" type="text" text placeholder="Vol (20)" value="Vol (20)" /></td>
+                    </tr>
+                </table>
+            </div>
+
+            <form  method="POST" enctype="multipart/form-data" id="fileUploadForm">
+    <input type="text" name="timezone" value="Etc/UTC"/><br/><br/>
+    <input id="fileUploadFormImage" type="text" name="images"/><br/><br/>
+
+    <input type="submit" value="Submit" id="btnSubmit"/>
+</form>
+
+            <p id="postContentHide">
+------WebKitFormBoundary---POSTBOUNDARY---
+Content-Disposition: form-data; name="timezone"
+
+Etc/UTC
+------WebKitFormBoundary---POSTBOUNDARY---
+Content-Disposition: form-data; name="images"
+
+{"layout":"s","hidpiRatio":1.5,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
+"rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
+"timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":20,
+"lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":20},
+"rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":20}},
+"colors":{"text":"#000000","bg":"#ffffff","scales":"#eeeeee"},
+"meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
+"ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
+"quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
+------WebKitFormBoundary---POSTBOUNDARY-----
+            </p>
+<p id="postContentHide2">
+{"layout":"s","hidpiRatio":1.5,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
+"rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
+"timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":20,
+"lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":20},
+"rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":20}},
+"colors":{"text":"#000000","bg":"#ffffff","scales":"#eeeeee"},
+"meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
+"ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
+"quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
+            </p>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2018.</p>
+        </footer>
+
+    </div> <!-- /container -->
+
+    <script src="js/main.js"></script>
+</body>
+</html>

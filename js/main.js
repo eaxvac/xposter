@@ -1,0 +1,142 @@
+function generateRandomText(length) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < length; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+function validateSelectedFile() {
+    var fileInput = document.getElementById("myImageInput");
+    var fileName = fileInput.value;
+    var idxDot = fileName.lastIndexOf(".") + 1;
+    var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+
+    if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+        var files = fileInput.files[0];
+
+        // Gets the base64 of the image
+        var reader = new FileReader();
+        reader.readAsDataURL(files);
+        reader.onload = function () {
+            var img = new Image();
+            img.onload = function () {
+                createTradingviewPostObject(reader.result, img.width, img.height);
+            };
+            img.src = reader.result;
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    } else {
+        alert("Only jpg/jpeg and png files are allowed!");
+    }
+}
+
+function createTradingviewPostObject(imgbase64, width, height) {
+    var basePostContent = document.getElementById("postContentHide2").innerHTML;
+
+    // Replace image
+    basePostContent = basePostContent.replace("---POSTIMAGE---", imgbase64);
+
+    // Replace width
+    // replace height
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---POSTIMAGEWIDTH---", width);
+        basePostContent = basePostContent.replace("---POSTIMAGEHEIGHT---", height);
+    }
+
+    // Replace Symbol
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---SYMBOL---", document.getElementById('symbol').value);
+    }
+
+    // Replace Timeframe
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---TIMEFRAME---", document.getElementById('timeframe').value);
+    }
+
+    // Replace Exchange
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---EXCHANGE---", document.getElementById('exchange').value);
+    }
+
+    // Replace percentage change
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---PERCCHANGE---", document.getElementById('percChange').value);
+    }
+
+    // Replace ticker
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---TICKER---", document.getElementById('ticker').value);
+    }
+
+    // Replace desc
+    for (var i = 0; i < 5; i++) {
+        basePostContent = basePostContent.replace("---DESC---", document.getElementById('description').value);
+    }
+
+    // Replace price
+    for (var i = 0; i < 10; i++) {
+        basePostContent = basePostContent.replace("---PRICE---", document.getElementById('price').value);
+    }
+
+    // Replace boundary
+   /* var boundary = generateRandomText(16);
+    for (var i = 0; i < 3; i++) {
+        basePostContent = basePostContent.replace("---POSTBOUNDARY---", boundary);
+    }*/
+    console.log(basePostContent);
+
+    // Set image
+    document.getElementById("fileUploadFormImage").value = basePostContent;
+
+    var form = $('#fileUploadForm')[0];
+    var data = new FormData(form);
+
+    console.log(data);
+
+    $.ajax({
+        type: "POST",
+        url: "https://www.tradingview.com/snapshot/",
+        enctype: 'multipart/form-data',
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
+        data: data,
+
+        success: function (result) {
+           // alert(result);
+           // window.open("https://tradingview.com/x/" + result, '_blank');
+
+            window.location.href = "https://tradingview.com/x/" + result;
+        },
+        error: function (e) {
+            alert("Error posting image." + e);
+        }
+    });
+
+    /*$.ajax({
+        type: "POST",
+        url: "https://www.tradingview.com/snapshot/",
+        crossDomain: true,
+        data: basePostContent,
+        processData: false,
+        cache: false,
+        contentType: "multipart/form-data; boundary=----WebKitFormBoundary" + boundary,
+        beforeSend: function (jqXHR) {
+            jqXHR.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+            jqXHR.setRequestHeader('Accept-Language', 'en-US,en;q=0.9');
+        },
+        headers: {
+            'Accept': '* /*',
+            'Referer': 'https://www.tradingview.com/'
+        },
+
+        success: function (result) {
+            alert(result.success);
+        }
+    });*/
+}
