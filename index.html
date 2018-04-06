@@ -32,29 +32,29 @@
 
 <body>
     <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted">Tradingview Image poster</h3>
-        </div>
+        <!--   <div class="header clearfix">
+           <nav>
+               <ul class="nav nav-pills pull-right">
+                   <li role="presentation" class="active"><a href="#">Home</a></li>
+               </ul>
+           </nav>
+           <h3 class="text-muted">Tradingview Image poster</h3>
+       </div>-->
 
         <div class="jumbotron">
-            <h1>Make charts great again!</h1>
+            <h2>Make meme charts great again!</h2>
 
-            <input accept="image/*" type="file" id="myImageInput"  onchange="validateSelectedFile();" />
+            <input accept="image/*" type="file" id="myImageInput" onchange="validateSelectedFile();" />
             <input type="button" class="btn btn-lg btn-success"
                    onclick="document.getElementById('myImageInput').click()"
-                   value="Select an image"  />
+                   value="Select an image" />
         </div>
 
         <div class="row marketing">
             <!--<div class="col-lg-6">
-                <h4>Sample</h4>
-                <a href="img/sample.png" target="_blank"><img src="img/sample.png" class="sample_image" /></a>
-            </div>-->
+            <h4>Sample</h4>
+            <a href="img/sample.png" target="_blank"><img src="img/sample.png" class="sample_image" /></a>
+        </div>-->
 
             <div>
                 <table style="width:50%" class="center">
@@ -106,47 +106,47 @@
                 </table>
             </div>
 
-            <form  method="POST" enctype="multipart/form-data" id="fileUploadForm">
-    <input type="text" name="timezone" value="Etc/UTC"/><br/><br/>
-    <input id="fileUploadFormImage" type="text" name="images"/><br/><br/>
+            <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+                <input type="text" name="timezone" value="Etc/UTC" /><br /><br />
+                <input id="fileUploadFormImage" type="text" name="images" /><br /><br />
 
-    <input type="submit" value="Submit" id="btnSubmit"/>
-</form>
+                <input type="submit" value="Submit" id="btnSubmit" />
+            </form>
 
             <p id="postContentHide">
-------WebKitFormBoundary---POSTBOUNDARY---
-Content-Disposition: form-data; name="timezone"
+                ------WebKitFormBoundary---POSTBOUNDARY---
+                Content-Disposition: form-data; name="timezone"
 
-Etc/UTC
-------WebKitFormBoundary---POSTBOUNDARY---
-Content-Disposition: form-data; name="images"
+                Etc/UTC
+                ------WebKitFormBoundary---POSTBOUNDARY---
+                Content-Disposition: form-data; name="images"
 
-{"layout":"s","hidpiRatio":1,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
-"rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
-"timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
-"lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
-"rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
-"colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
-"meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
-"ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
-"quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
-------WebKitFormBoundary---POSTBOUNDARY-----
+                {"layout":"s","hidpiRatio":1,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
+                "rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
+                "timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
+                "lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
+                "rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
+                "colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
+                "meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
+                "ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
+                "quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
+                ------WebKitFormBoundary---POSTBOUNDARY-----
             </p>
-<p id="postContentHide2">
-{"layout":"s","hidpiRatio":1,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
-"rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
-"timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
-"lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
-"rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
-"colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
-"meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
-"ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
-"quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
+            <p id="postContentHide2">
+                {"layout":"s","hidpiRatio":1,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
+                "rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
+                "timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
+                "lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
+                "rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
+                "colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
+                "meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
+                "ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
+                "quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
             </p>
         </div>
 
         <footer class="footer">
-            <p>&copy; 2018.</p>
+            <p>&copy; eaxvac/lastbattle 2018.</p>
         </footer>
 
     </div> <!-- /container -->

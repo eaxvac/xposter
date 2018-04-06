@@ -43,16 +43,16 @@ body {
     max-height: 500px;
 }
 #myImageInput {
-    visibility: hidden;
+    visibility: collapse;
 }
 #postContentHide {
-    visibility: hidden;
+    visibility: collapse;
 }
 #postContentHide2 {
-    visibility: hidden;
+    visibility: collapse;
 }
 #fileUploadForm {
-    visibility: hidden;
+    visibility: collapse;
 }
 
 
