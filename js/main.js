@@ -1,3 +1,48 @@
+randomizeMetaDatas();
+
+/**
+ * Randomizes metadata of the chart
+ * Avoids mass deletion
+ */
+function randomizeMetaDatas() {
+    var priceObj = document.getElementById('price');
+    var descObj = document.getElementById('description');
+    var tickerObj = document.getElementById('ticker');
+    var priceChangeObj = document.getElementById('percChange');
+    var exchangeObj = document.getElementById('exchange');
+    var timeframeObj = document.getElementById('timeframe');
+    var symbolObj = document.getElementById('symbol');
+
+    // Random price
+    priceObj.value = Math.floor(Math.random() * 30000);
+
+    // Random desc
+    // Random ticker
+    var possiblePairName = ["Bitcoin", "Dollar", "Monero", "Litecoin", "Ethereum", "Ethereum Classic", "Bitcoin Cash", "SONM", "DOGE", "Aeon", "Omni", "Counterparty", "Ripple", "Lisk", "eBoost", "Genosis", "Edgeless"];
+    var possiblePairTicker = ["BTC", "USD", "XMR", "LTC", "ETH", "ETC", "BCH", "SNM", "DOGE", "AEON", "OMNI", "XCP", "XRP", "LSK", "EBST", "GNO", "EDG"];
+
+    var selectPair1 = -1, selectPair2 = -1;
+    while (selectPair1 == -1 || selectPair2 == -1 || (selectPair1 == selectPair2)) {
+        selectPair1 = Math.floor(Math.random() * possiblePairName.length);
+        selectPair2 = Math.floor(Math.random() * possiblePairName.length);
+    }
+    descObj.value = possiblePairName[selectPair1] + " / " + possiblePairName[selectPair2];
+    tickerObj.value = possiblePairTicker[selectPair1] + possiblePairTicker[selectPair2];
+
+    // Random Price change
+    priceChangeObj.value = -99 + Math.floor(Math.random() * 199);
+
+    // Random exchange
+    var possibleExchanges = ["Bitfinex", "Bitstamp", "Kraken", "Binance", "Coinbase", "FXCM", "SP", "Bitmex", "Oanda", "TVC", "Bitflyer", "MTGox"];
+    exchangeObj.value = possibleExchanges[Math.floor(Math.random() * possibleExchanges.length)];
+
+    // Random timeframe
+    timeframeObj.value = Math.floor(Math.random() * 720);
+
+    // Random symbol
+}
+
+
 function generateRandomText(length) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -30,8 +75,8 @@ function validateSelectedFile() {
         reader.onerror = function (error) {
             console.log('Error: ', error);
         };
-    } else {
-        alert("Only jpg/jpeg and png files are allowed!");
+    } else if (extFile != null && extFile != "") {
+        alert("Only jpg/jpeg and png files are possible :(");
     }
 }
 
