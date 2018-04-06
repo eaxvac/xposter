@@ -18,8 +18,8 @@ function randomizeMetaDatas() {
 
     // Random desc
     // Random ticker
-    var possiblePairName = ["Bitcoin", "Dollar", "Monero", "Litecoin", "Ethereum", "Ethereum Classic", "Bitcoin Cash", "SONM", "DOGE", "Aeon", "Omni", "Counterparty", "Ripple", "Lisk", "eBoost", "Genosis", "Edgeless"];
-    var possiblePairTicker = ["BTC", "USD", "XMR", "LTC", "ETH", "ETC", "BCH", "SNM", "DOGE", "AEON", "OMNI", "XCP", "XRP", "LSK", "EBST", "GNO", "EDG"];
+    var possiblePairName = ["Bitcoin", "Dollar", "Euro", "Chinese Yuan", "Japanese Yen", "Monero", "Litecoin", "Ethereum", "Ethereum Classic", "Bitcoin Cash", "SONM", "DOGE", "Aeon", "Omni", "Counterparty", "Ripple", "Lisk", "eBoost", "Genosis", "Edgeless"];
+    var possiblePairTicker = ["BTC", "USD", "EUR", "CNH", "JPY", "XMR", "LTC", "ETH", "ETC", "BCH", "SNM", "DOGE", "AEON", "OMNI", "XCP", "XRP", "LSK", "EBST", "GNO", "EDG"];
 
     var selectPair1 = -1, selectPair2 = -1;
     while (selectPair1 == -1 || selectPair2 == -1 || (selectPair1 == selectPair2)) {
@@ -34,7 +34,7 @@ function randomizeMetaDatas() {
 
     // Random exchange
     var possibleExchanges = ["Bitfinex", "Bitstamp", "Kraken", "Binance", "Coinbase", "FXCM", "SP", "Bitmex", "Oanda", "TVC", "Bitflyer", "MTGox"];
-    exchangeObj.value = possibleExchanges[Math.floor(Math.random() * possibleExchanges.length)];
+    exchangeObj.value = possibleExchanges[Math.floor(Math.random() * possibleExchanges.length)].toUpperCase();
 
     // Random timeframe
     timeframeObj.value = Math.floor(Math.random() * 720);
