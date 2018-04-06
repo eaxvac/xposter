@@ -90,6 +90,19 @@
                         <td>Symbol</td>
                         <td><input id="symbol" type="text" text placeholder="Vol (20)" value="Vol (20)" /></td>
                     </tr>
+
+                    <tr>
+                        <td>Background color</td>
+                        <td><input type="color" id="bgColor" value="#ffffff" style="width:85%;"></td>
+                    </tr>
+                    <tr>
+                        <td>Text color</td>
+                        <td><input type="color" id="textColor" value="#000000" style="width:85%;"></td>
+                    </tr>
+                    <tr>
+                        <td>Scale color</td>
+                        <td><input type="color" id="scaleColor" value="#eeeeee" style="width:85%;"></td>
+                    </tr>
                 </table>
             </div>
 
@@ -113,19 +126,19 @@ Content-Disposition: form-data; name="images"
 "timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
 "lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
 "rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
-"colors":{"text":"#000000","bg":"#ffffff","scales":"#eeeeee"},
+"colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
 "meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
 "ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
 "quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}
 ------WebKitFormBoundary---POSTBOUNDARY-----
             </p>
 <p id="postContentHide2">
-{"layout":"s","hidpiRatio":1.5,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
+{"layout":"s","hidpiRatio":1,"charts":[{"panes":[{"leftAxis":{"content":"data:,","contentWidth":0,"contentHeight":---POSTIMAGEHEIGHT---},
 "rightAxis":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":---POSTIMAGEHEIGHT---},"content":"---POSTIMAGE---","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":---POSTIMAGEHEIGHT---,"containsMainSeries":true,"studies":["---SYMBOL---"],"mainSeriesText":"---DESC---, ---TIMEFRAME---, ---EXCHANGE---"}],
 "timeAxis":{"content":"data:image/png;base64,","contentWidth":---POSTIMAGEWIDTH---,"contentHeight":1,
 "lhsStub":{"content":"data:,","contentWidth":0,"contentHeight":1},
 "rhsStub":{"content":"data:image/png;base64,","contentWidth":1,"contentHeight":1}},
-"colors":{"text":"#000000","bg":"#ffffff","scales":"#eeeeee"},
+"colors":{"text":"---TEXTCOLOR---","bg":"---BGCOLOR---","scales":"---SCALECOLOR---"},
 "meta":{"resolution":"---TIMEFRAME---","symbol":"---EXCHANGE---:---TICKER---","description":"---DESC---","exchange":"---EXCHANGE---"},
 "ohlc":["---PRICE---","---PRICE---","---PRICE---","---PRICE---"],
 "quotes":{"change":"---PERCCHANGE---","changePercent":"---PERCCHANGE---","last":"---PRICE---"}}]}

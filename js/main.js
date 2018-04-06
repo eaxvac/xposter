@@ -128,6 +128,15 @@ function createTradingviewPostObject(imgbase64, width, height) {
         basePostContent = basePostContent.replace("---PRICE---", document.getElementById('price').value);
     }
 
+    // Replace text color
+    basePostContent = basePostContent.replace("---TEXTCOLOR---", document.getElementById('textColor').value);
+
+    // Replace BG color
+    basePostContent = basePostContent.replace("---BGCOLOR---", document.getElementById('bgColor').value);
+
+    // Replace Scale color
+    basePostContent = basePostContent.replace("---SCALECOLOR---", document.getElementById('scaleColor').value);
+
     // Replace boundary
    /* var boundary = generateRandomText(16);
     for (var i = 0; i < 3; i++) {
