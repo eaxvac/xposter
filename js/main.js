@@ -43,16 +43,6 @@ function randomizeMetaDatas() {
 }
 
 
-function generateRandomText(length) {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < length; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
-}
-
 function validateSelectedFile() {
     var fileInput = document.getElementById("myImageInput");
     var fileName = fileInput.value;
@@ -68,7 +58,7 @@ function validateSelectedFile() {
         reader.onload = function () {
             var img = new Image();
             img.onload = function () {
-                createTradingviewPostObject(reader.result, img.width, img.height);
+                createPostObject(reader.result, img.width, img.height);
             };
             img.src = reader.result;
         };
@@ -80,7 +70,7 @@ function validateSelectedFile() {
     }
 }
 
-function createTradingviewPostObject(imgbase64, width, height) {
+function createPostObject(imgbase64, width, height) {
     var basePostContent = document.getElementById("postContentHide2").innerHTML;
 
     // Replace image
@@ -154,7 +144,7 @@ function createTradingviewPostObject(imgbase64, width, height) {
 
     $.ajax({
         type: "POST",
-        url: "https://www.tradingview.com/snapshot/",
+        url: Base64Decode("aHR0cHM6Ly93d3cudHJhZGluZ3ZpZXcuY29tL3NuYXBzaG90Lw=="),
         enctype: 'multipart/form-data',
         processData: false,  // Important!
         contentType: false,
@@ -165,7 +155,7 @@ function createTradingviewPostObject(imgbase64, width, height) {
            // alert(result);
            // window.open("https://tradingview.com/x/" + result, '_blank');
 
-            window.location.href = "https://tradingview.com/x/" + result;
+            window.location.href = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
         },
         error: function (e) {
             alert("Error posting image." + e);
@@ -174,7 +164,7 @@ function createTradingviewPostObject(imgbase64, width, height) {
 
     /*$.ajax({
         type: "POST",
-        url: "https://www.tradingview.com/snapshot/",
+        url: Base64Decode("aHR0cHM6Ly93d3cudHJhZGluZ3ZpZXcuY29tL3NuYXBzaG90Lw=="),
         crossDomain: true,
         data: basePostContent,
         processData: false,
@@ -186,11 +176,33 @@ function createTradingviewPostObject(imgbase64, width, height) {
         },
         headers: {
             'Accept': '* /*',
-            'Referer': 'https://www.tradingview.com/'
+            'Referer': Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=")
         },
 
         success: function (result) {
             alert(result.success);
         }
     });*/
+}
+
+
+//////////////////////////////// UTILS
+function Base64Encode(str, encoding = 'utf-8') {
+    var bytes = new (TextEncoder || TextEncoderLite)(encoding).encode(str);
+    return base64js.fromByteArray(bytes);
+}
+
+function Base64Decode(str, encoding = 'utf-8') {
+    var bytes = base64js.toByteArray(str);
+    return new (TextDecoder || TextDecoderLite)(encoding).decode(bytes);
+}
+
+function generateRandomText(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
