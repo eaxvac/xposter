@@ -185,6 +185,24 @@ function createPostObject(imgbase64, width, height) {
     });*/
 }
 
+function clearAllText() {
+    var priceObj = document.getElementById('price');
+    var descObj = document.getElementById('description');
+    var tickerObj = document.getElementById('ticker');
+    var priceChangeObj = document.getElementById('percChange');
+    var exchangeObj = document.getElementById('exchange');
+    var timeframeObj = document.getElementById('timeframe');
+    var symbolObj = document.getElementById('symbol');
+
+    priceObj.value = "";
+    descObj.value = "";
+    tickerObj.value = "";
+    priceChangeObj.value = "";
+    exchangeObj.value = "";
+    timeframeObj.value = "";
+    symbolObj.value = "";
+}
+
 
 //////////////////////////////// UTILS
 function Base64Encode(str, encoding = 'utf-8') {
