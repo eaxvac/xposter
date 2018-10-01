@@ -43,6 +43,40 @@ function randomizeMetaDatas() {
 }
 
 
+/*
+Paste image from clipboard
+*/
+document.onpaste = function (event) {
+    var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+    //console.log(JSON.stringify(items)); // will give you the mime types
+
+    for (index in items) {
+        var item = items[index];
+        if (item.kind === 'file') {
+            var blob = item.getAsFile();
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var image = event.target.result;
+
+                console.log(image)
+
+                if (image.startsWith("data:image/png;base64") || image.startsWith("data:image/jpeg;base64")) {
+                    // Gets the base64 image dimension
+                    var i = new Image()
+                    i.onload = function () {
+                        createPostObject(image, i.width, i.height);
+                    };
+                    i.src = image
+                }
+            }; // data url!
+            reader.readAsDataURL(blob);
+        }
+    }
+}
+
+/**
+ * On select image
+ */
 function validateSelectedFile() {
     var fileInput = document.getElementById("myImageInput");
     var fileName = fileInput.value;
@@ -157,8 +191,8 @@ function createPostObject(imgbase64, width, height) {
 
             window.location.href = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
         },
-        error: function (e) {
-            alert("Error posting image." + e);
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error posting image. " + XMLHttpRequest.statusText + " " + textStatus + " " + errorThrown);
         }
     });
 

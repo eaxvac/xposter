@@ -1,0 +1,11 @@
+body {
+    background-image: url("../img/wojak.png");
+    background-repeat: no-repeat;
+    background-position: center; /* Center the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: 0.95;
+}
+
+#imageHint {
+    background-color: white;
+}
