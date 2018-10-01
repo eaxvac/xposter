@@ -42,6 +42,60 @@ function randomizeMetaDatas() {
     // Random symbol
 }
 
+/**
+ * Drag and drop image
+ * @param {any} ev
+ */
+function dropHandler(ev) {
+    console.log('File(s) dropped');
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+
+    if (ev.dataTransfer.items) {
+        // Use DataTransferItemList interface to access the file(s)
+        for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+            // If dropped items aren't files, reject them
+            if (ev.dataTransfer.items[i].kind === 'file') {
+                var file = ev.dataTransfer.items[i].getAsFile();
+                console.log('... file[' + i + '].name = ' + file.name);
+
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var image = event.target.result;
+
+                    processPasteOrDraggedImage(image);
+                }; // data url!
+                reader.readAsDataURL(file);
+            }
+        }
+    } else {
+        // Use DataTransfer interface to access the file(s)
+        for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+            console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+        }
+    }
+
+    // Pass event to removeDragData for cleanup
+    removeDragData(ev)
+}
+function dragOverHandler(ev) {
+    console.log('File(s) in drop zone');
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+}
+function removeDragData(ev) {
+    console.log('Removing drag data');
+
+    if (ev.dataTransfer.items) {
+        // Use DataTransferItemList interface to remove the drag data
+        ev.dataTransfer.items.clear();
+    } else {
+        // Use DataTransfer interface to remove the drag data
+        ev.dataTransfer.clearData();
+    }
+}
 
 /*
 Paste image from clipboard
@@ -58,19 +112,27 @@ document.onpaste = function (event) {
             reader.onload = function (event) {
                 var image = event.target.result;
 
-                console.log(image)
-
-                if (image.startsWith("data:image/png;base64") || image.startsWith("data:image/jpeg;base64")) {
-                    // Gets the base64 image dimension
-                    var i = new Image()
-                    i.onload = function () {
-                        createPostObject(image, i.width, i.height);
-                    };
-                    i.src = image
-                }
+                processPasteOrDraggedImage(image);
             }; // data url!
             reader.readAsDataURL(blob);
         }
+    }
+}
+
+/**
+ * Process an image to post
+ * @param {any} image
+ */
+function processPasteOrDraggedImage(image) {
+    console.log(image)
+
+    if (image.startsWith("data:image/png;base64") || image.startsWith("data:image/jpeg;base64")) {
+        // Gets the base64 image dimension
+        var i = new Image()
+        i.onload = function () {
+            createPostObject(image, i.width, i.height);
+        };
+        i.src = image
     }
 }
 

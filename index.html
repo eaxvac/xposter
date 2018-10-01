@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
         <!--   <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
@@ -116,7 +116,7 @@
                             <input type="button" class="btn btn-lg btn-success"
                                    onclick="document.getElementById('myImageInput').click()"
                                    value="Select an image" />
-                            <h6 id="imageHint">(Or simply paste image from clipboard)</h6>
+                            <h6 id="imageHint">(Or simply paste image from clipboard Ctl + V, or drag + drop)</h6>
                         </td>
                     </tr>
                 </table>
