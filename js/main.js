@@ -1,4 +1,3 @@
-randomizeMetaDatas();
 
 /**
  * Randomizes metadata of the chart
@@ -279,6 +278,10 @@ function createPostObject(imgbase64, width, height) {
             alert(result.success);
         }
     });*/
+}
+
+function addRandomMetadata() {
+    randomizeMetaDatas();
 }
 
 function clearAllText() {
