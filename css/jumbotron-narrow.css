@@ -51,6 +51,9 @@ body {
 #postContentHide2 {
     visibility: collapse;
 }
+#postContentHidev3 {
+    visibility: collapse;
+}
 #fileUploadForm {
     visibility: collapse;
 }
