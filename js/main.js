@@ -166,7 +166,7 @@ function validateSelectedFile() {
 }
 
 function createPostObject(imgbase64, width, height) {
-    var basePostContent = document.getElementById("postContentHide2").innerHTML;
+    var basePostContent = document.getElementById("postContentHidev3").innerHTML;
 
     // Replace image
     basePostContent = basePostContent.replace("---POSTIMAGE---", imgbase64);
@@ -230,7 +230,7 @@ function createPostObject(imgbase64, width, height) {
     console.log(basePostContent);
 
     // Set image
-    document.getElementById("fileUploadFormImage").value = basePostContent;
+    document.getElementById("fileUploadFormImage").value = JSON.stringify(JSON.parse(basePostContent));
 
     var form = $('#fileUploadForm')[0];
     var data = new FormData(form);
