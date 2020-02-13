@@ -1,3 +1,9 @@
+main();
+
+function main() {
+    //test
+    //$('#div_modelNodeInfo').modal('show');
+}
 
 /**
  * Randomizes metadata of the chart
@@ -131,7 +137,7 @@ function processPasteOrDraggedImage(image) {
         i.onload = function () {
             createPostObject(image, i.width, i.height);
         };
-        i.src = image
+        i.src = image;
     }
 }
 
@@ -166,6 +172,10 @@ function validateSelectedFile() {
 }
 
 function createPostObject(imgbase64, width, height) {
+    document.getElementById("input_url").value = ""; // Reset 
+    $('#div_modelNodeInfo').modal('show'); // show uploading menu
+
+
     var basePostContent = document.getElementById("postContentHidev3").innerHTML;
 
     // Replace image
@@ -250,7 +260,8 @@ function createPostObject(imgbase64, width, height) {
            // alert(result);
            // window.open("https://tradingview.com/x/" + result, '_blank');
 
-            window.location.href = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
+            //window.location.href = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
+            document.getElementById("input_url").value = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Error posting image. " + XMLHttpRequest.statusText + " " + textStatus + " " + errorThrown);
