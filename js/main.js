@@ -261,7 +261,16 @@ function createPostObject(imgbase64, width, height) {
            // window.open("https://tradingview.com/x/" + result, '_blank');
 
             //window.location.href = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
-            document.getElementById("input_url").value = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
+
+            var tvURL = Base64Decode("aHR0cHM6Ly90cmFkaW5ndmlldy5jb20veC8=") + result;
+            var urlOutputObject = document.getElementById("input_url");
+
+            urlOutputObject.value = tvURL;
+
+            urlOutputObject.select();
+            urlOutputObject.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Error posting image. " + XMLHttpRequest.statusText + " " + textStatus + " " + errorThrown);
