@@ -58,6 +58,8 @@ function dropHandler(ev) {
     ev.preventDefault();
 
     if (ev.dataTransfer.items) {
+        var bPosted = false;
+
         // Use DataTransferItemList interface to access the file(s)
         for (var i = 0; i < ev.dataTransfer.items.length; i++) {
             // If dropped items aren't files, reject them
@@ -72,17 +74,26 @@ function dropHandler(ev) {
                     processPasteOrDraggedImage(image);
                 }; // data url!
                 reader.readAsDataURL(file);
+
+                bPosted = true;
+                break;
             }
+        }
+
+        if (!bPosted) {
+            alert("It seems that following file(s) that you have dropped isnt an image. \nType: " + (ev.dataTransfer.items[i].length > 0 ? ev.dataTransfer.items[i].kind : ""));
         }
     } else {
         // Use DataTransfer interface to access the file(s)
         for (var i = 0; i < ev.dataTransfer.files.length; i++) {
             console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+
+            alert("It seems that following file(s) that you have dropped isnt an image. \nType: " + ev.dataTransfer.files[i].kind);
         }
     }
 
     // Pass event to removeDragData for cleanup
-    removeDragData(ev)
+    removeDragData(ev);
 }
 function dragOverHandler(ev) {
     console.log('File(s) in drop zone');
@@ -129,7 +140,7 @@ document.onpaste = function (event) {
  * @param {any} image
  */
 function processPasteOrDraggedImage(image) {
-    console.log(image)
+    //console.log(image)
 
     if (image.startsWith("data:image/png;base64") || image.startsWith("data:image/jpeg;base64")) {
         // Gets the base64 image dimension
@@ -237,7 +248,7 @@ function createPostObject(imgbase64, width, height) {
     for (var i = 0; i < 3; i++) {
         basePostContent = basePostContent.replace("---POSTBOUNDARY---", boundary);
     }*/
-    console.log(basePostContent);
+    //console.log(basePostContent);
 
     // Set image
     document.getElementById("fileUploadFormImage").value = JSON.stringify(JSON.parse(basePostContent));
@@ -245,7 +256,7 @@ function createPostObject(imgbase64, width, height) {
     var form = $('#fileUploadForm')[0];
     var data = new FormData(form);
 
-    console.log(data);
+    //console.log(data);
 
     $.ajax({
         type: "POST",
